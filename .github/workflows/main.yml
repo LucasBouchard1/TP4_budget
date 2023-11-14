@@ -1,16 +1,16 @@
-name: Python package
-on: [push]
-jobs:
-  build:
+name: Python package # Nom du workflow
+on: [push]           # 'Event' qui vas déclancher le workflow
+jobs:                # Contient tout les 'Jobs' qui vont êtres roulés dans le workflow
+  build:             # Définit le nom du premier 'Job' ainsi que ses propriétées
 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-      - name: Install packages
-        run: pip install -r requirements.txt
-      - name: Run tests
-        run: python manage.py test
+    runs-on: ubuntu-latest                    # Fait en sorte que le 'Job' build roule sur la version Ubuntu la plus récente, ce serveur est appelé 'runner'
+    steps:                                    # Regroupe les étapes, en ordre d'exécutions, du 'Job' build
+      - uses: actions/checkout@v3             # Définit l'étape 1: rend le repertoire accessible au 'runner' pour pouvoir utiliser son code
+      - name: Setup Python                    # Nomme l'étape 2
+        uses: actions/setup-python@v4         # Définit l'étape 2: installe python et l'ajoute au PATH du 'runner'
+        with:                                 # Permet d'ajouter des paramètres à l'action
+          python-version: "3.9"               # Spécifie la version de python attendue
+      - name: Install packages                # Nomme l'étape 3
+        run: pip install -r requirements.txt  # Définit l'étape 3: cette commande sera exécutée dans le 'runner' afin d'installer les dépendances de notre repertoire
+      - name: Run tests                       # Nomme l'étape 4
+        run: python manage.py test            # Définit l'étape 4: cette commande sera exécutée dans le 'runner' afin de rouler le fichier manage.py
