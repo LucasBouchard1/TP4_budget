@@ -13,4 +13,4 @@ jobs:                # Contient tout les 'Jobs' qui vont êtres roulés dans le 
       - name: Install packages                # Nomme l'étape 3
         run: pip install -r requirements.txt  # Définit l'étape 3: cette commande sera exécutée dans le 'runner' afin d'installer les dépendances de notre repertoire
       - name: Run tests                       # Nomme l'étape 4
-        run: python manage.py test            # Définit l'étape 4: cette commande sera exécutée dans le 'runner' afin de rouler le fichier manage.py
+        run: python myscript.py               # Définit l'étape 4: cette commande sera exécutée dans le 'runner' afin de rouler le fichier myscript.py
