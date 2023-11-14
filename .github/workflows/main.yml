@@ -6,6 +6,8 @@ jobs:                # Contient tout les 'Jobs' qui vont êtres roulés dans le 
     runs-on: ubuntu-latest                    # Fait en sorte que le 'Job' build roule sur la version Ubuntu la plus récente, ce serveur est appelé 'runner'
     steps:                                    # Regroupe les étapes, en ordre d'exécutions, du 'Job' build
       - uses: actions/checkout@v3             # Définit l'étape 1: rend le repertoire accessible au 'runner' pour pouvoir utiliser son code
+        with:
+          fetch-depth: 0
       - name: Setup Python                    # Nomme l'étape 2
         uses: actions/setup-python@v4         # Définit l'étape 2: installe python et l'ajoute au PATH du 'runner'
         with:                                 # Permet d'ajouter des paramètres à l'action
